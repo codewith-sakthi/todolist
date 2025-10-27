@@ -1,0 +1,90 @@
+/* Backup of the dark-modern theme (created before applying bright theme)
+   You can restore this file by copying its contents back into components.css
+*/
+:root{
+  --primary-color: #0b1117;
+  --surface-color: #0f161b;
+  --muted-surface: rgba(255,255,255,0.02);
+  --text-color: #e6eef6;
+  --muted-text: rgba(230,238,246,0.6);
+  --accent-color: #26d0ff;
+  --accent-strong: #00b8ff;
+  --accent-glow: rgba(38,208,255,0.18);
+  --radius: 10px;
+  --sm-radius: 8px;
+  --transition-fast: 160ms;
+  --transition-medium: 260ms;
+}
+
+/* Typography & base */
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--primary-color);
+  color:var(--text-color);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Utilities */
+*{box-sizing:border-box}
+.container{max-width:960px;margin:48px auto;padding:24px;}
+
+/* Card */
+.card{background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.02)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:calc(var(--radius)-2px);cursor:pointer;border:none;font-weight:600;transition:transform var(--transition-fast),box-shadow var(--transition-fast),opacity var(--transition-fast)}
+.btn-primary{background:linear-gradient(180deg,var(--accent-color),var(--accent-strong));color:#021024;box-shadow:0 8px 24px rgba(2,8,20,0.45),0 0 18px var(--accent-glow),0 2px 6px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.03)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(2,8,20,0.55),0 0 36px rgba(38,208,255,0.28),0 4px 10px rgba(0,0,0,0.55)}
+.btn-primary:focus{box-shadow:0 10px 30px rgba(2,8,20,0.55),0 0 28px rgba(38,208,255,0.32);outline:3px solid rgba(38,208,255,0.12);outline-offset:2px}
+.btn-ghost{background:transparent;color:var(--text-color);border:1px solid rgba(255,255,255,0.06);box-shadow:0 6px 18px rgba(2,8,20,0.45);transition:box-shadow var(--transition-fast),background var(--transition-medium)}
+.btn-ghost:hover{background:rgba(38,208,255,0.04);box-shadow:0 10px 28px rgba(2,8,20,0.6),0 0 20px rgba(38,208,255,0.12)}
+
+/* Inputs */
+.input{width:100%;padding:12px 14px;border-radius:var(--sm-radius);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--text-color);transition:box-shadow var(--transition-fast),border-color var(--transition-fast),transform var(--transition-fast)}
+.input:focus{border-color:var(--accent-strong);box-shadow:0 6px 22px rgba(2,8,20,0.5),0 0 18px rgba(38,208,255,0.14);transform:translateY(-1px);outline:none}
+
+/* Todo list */
+.todo-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.todo-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.012),rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02);transition:background var(--transition-fast),box-shadow var(--transition-fast),transform var(--transition-fast)}
+.todo-item:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(2,8,20,0.5),0 0 20px rgba(38,208,255,0.06)}
+.todo-text{flex:1;color:var(--text-color)}
+.todo-text.completed{text-decoration:line-through;color:var(--muted-text);opacity:0.9}
+.todo-delete{appearance:none;background:transparent;color:var(--text-color);border:none;font-size:18px;padding:6px;border-radius:8px;transition:background var(--transition-fast),filter var(--transition-fast)}
+.todo-delete:hover{background:rgba(255,255,255,0.02);filter:drop-shadow(0 6px 18px rgba(38,208,255,0.12))}
+
+/* Icon helpers */
+.icon-accent{filter:drop-shadow(0 6px 18px rgba(38,208,255,0.12))}
+
+/* small utility */
+.small-muted{color:var(--muted-text);font-size:0.9rem}
+
+/* Animations: entrance for new items */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px) scale(0.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.todo-item.animate-in{
+  animation: fadeInUp 360ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+/* Header and subtitle */
+.card h1{ margin:0; font-size:1.6rem; letter-spacing: -0.02em }
+.card .subtitle{ color: var(--muted-text); margin-top:6px; margin-bottom:14px; font-size:0.95rem }
+
+/* Empty state (pleasant message + subtle icon space) */
+.empty-illustration{ width:48px; height:48px; display:inline-block; vertical-align:middle; margin-right:10px; opacity:0.9 }
+.empty-wrapper{ display:flex; align-items:center; gap:12px; margin-top:16px; }
+.empty-text{ color:var(--muted-text); font-size:0.98rem }
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  .container{ padding:16px; margin:24px auto }
+  .card{ padding:14px }
+  .btn{ padding:10px 12px }
+  .todo-item{ padding:10px }
+}
